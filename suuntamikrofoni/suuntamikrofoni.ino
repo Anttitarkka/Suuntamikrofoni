@@ -5,18 +5,17 @@
 #include <SerialFlash.h>
 
 // GUItool: begin automatically generated code
-AudioInputI2S            i2s1;           //xy=194,161
+AudioInputAnalogStereo   adcs1;          //xy=180,180
 AudioEffectDelay         delay2;         //xy=388,99
 AudioEffectDelay         delay1;         //xy=389,246
 AudioMixer4              mixer1;         //xy=555,165
 AudioOutputAnalog        dac1;           //xy=705,158
-AudioConnection          patchCord1(i2s1, 0, delay2, 0);
-AudioConnection          patchCord2(i2s1, 1, delay1, 0);
+AudioConnection          patchCord1(adcs1, 0, delay2, 0);
+AudioConnection          patchCord2(adcs1, 1, delay1, 0);
 AudioConnection          patchCord3(delay2, 0, mixer1, 0);
 AudioConnection          patchCord4(delay1, 0, mixer1, 1);
 AudioConnection          patchCord5(mixer1, dac1);
 // GUItool: end automatically generated code
-
 
 const int up = 2;     // Buttons control the microphone direction
 const int down = 7;
@@ -31,7 +30,6 @@ float dpar2 = 0.0;
 
 void setup() {
   // put your setup code here, to run once:´
-  Serial.begin(9600);
   pinMode(up, INPUT_PULLUP);   // initialize the pushbutton pin as an input:
   pinMode(down, INPUT_PULLUP);   // initialize the pushbutton pin as an input:
   AudioMemory(60);
@@ -60,9 +58,8 @@ float calculateDelay(int mic, float x) {
 }
 
 void loop() {
-    // put your main code here, to run repeatedly:
-
-  Serial.print(deg);  
+  // put your main code here, to run repeatedly:
+  
   state1 = digitalRead(up);
   if (state1 != lastState1) {
     if (state1 == LOW && deg < 181.0){
