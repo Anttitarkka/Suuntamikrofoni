@@ -82,7 +82,7 @@ void loop() {
     } 
   }
   
-  if (deg < (degPrev + 5.0) || deg > (degPrev - 5.0)) {
+  if (deg <= (degPrev + 4.5) || deg >= (degPrev - 4.5)) {
     degPrev = deg;
     dpar1 = calculateDelay(1, deg);
     dpar2 = calculateDelay(2, deg);
