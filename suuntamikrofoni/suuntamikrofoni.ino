@@ -19,21 +19,21 @@ AudioConnection          patchCord5(mixer1, dac1);
 
 const int up = 2;     // Buttons control the microphone direction
 const int down = 7;
-int state1 = 0;
+int state1 = 0;       // States for checking if buttons are pressed
 int lastState1 = 0;
 int state2 = 0;
 int lastState2 = 0;
-float deg = 91.0;
-float degPrev = 91.0;
-float dpar1 = 0.0;
+float deg = 91.0;     // Default direction is straight
+float degPrev = 91.0; 
+float dpar1 = 0.0;    
 float dpar2 = 0.0;
 
 void setup() {
   // put your setup code here, to run once:´
   pinMode(up, INPUT_PULLUP);   // initialize the pushbutton pin as an input:
   pinMode(down, INPUT_PULLUP);   // initialize the pushbutton pin as an input:
-  AudioMemory(60);
-  delay1.delay(0, dpar1);
+  AudioMemory(60);  // Allocate audiomemory blocks for delay
+  delay1.delay(0, dpar1); //Initialize delay and mixers
   delay2.delay(0, dpar2);
   mixer1.gain(0, 1.0);
   mixer1.gain(1, 1.0);
@@ -54,7 +54,7 @@ float calculateDelay(int mic, float x) {
       d = 0.0;
     }
   }
-  return d * 1000.0;
+  return d * 1000.0; // Convert seconds to ms
 }
 
 void loop() {
