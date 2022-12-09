@@ -42,19 +42,19 @@ void setup() {
 float calculateDelay(int mic, float x) { 
   float d;
   if (mic == 1){
-    if (x <= 91.0 && x >= 1.0) {
+    if (x < 91.0 && x >= 1.0) { // Checks if delay is positive
       d = 0.583062*cos(0.0174538*(-1 + x));
     } else {
       d = 0.0;
     }
   } else {
-    if (x >= 91.0 && x <= 181.0) {
+    if (x > 91.0 && x <= 181.0) { // Checks if delay is positive
       d = 0.583062*cos(0.0174538*(-181 + x));
     } else {
       d = 0.0;
     }
   }
-  return abs(d); // Convert seconds to ms
+  return d;
 }
 
 void loop() {
