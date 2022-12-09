@@ -54,7 +54,7 @@ float calculateDelay(int mic, float x) {
       d = 0.0;
     }
   }
-  return d; // Convert seconds to ms
+  return abs(d); // Convert seconds to ms
 }
 
 void loop() {
