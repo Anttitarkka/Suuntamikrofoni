@@ -35,8 +35,8 @@ void setup() {
   AudioMemory(60);  // Allocate audiomemory blocks for delay
   delay1.delay(0, dpar1); //Initialize delay and mixers
   delay2.delay(0, dpar2);
-  mixer1.gain(0, 1.0);
-  mixer1.gain(1, 1.0);
+  mixer1.gain(0, 0.5);
+  mixer1.gain(1, 0.5);
 }
 
 float calculateDelay(int mic, float x) { 
